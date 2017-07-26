@@ -107,7 +107,7 @@ class Provider{
     }
 
     public function sendContents($player, int $number = 1, string $viewer = null){
-        $player = $player instanceof Player ? $player->getLowerCaseName() : strtolower($player);
+        $player = $player instanceof Player ? $player->getName() : strtolower($player);
         if($viewer === null){
             $viewer = $player;
         }
