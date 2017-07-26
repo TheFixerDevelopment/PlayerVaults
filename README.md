@@ -1,3 +1,3 @@
 # PlayerVaults
-Per-player inventory-based vaults plugin for PocketMine-MP
+Per-player inventory-based vaults plugin for GenisysPro
 
