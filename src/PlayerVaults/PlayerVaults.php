@@ -114,7 +114,7 @@ class PlayerVaults extends PluginBase{
         return self::$instance;
     }
 
-    public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args) : bool{
+    public function onCommand(CommandSender $sender, Command $cmd, $label, array $args) {
         if(isset($args[0]) && $args[0] !== "help" && $args[0] !== ""){
             if(is_numeric($args[0])){
                 if(strpos($args[0], ".") !== false){
@@ -126,10 +126,10 @@ class PlayerVaults extends PluginBase{
                         $sender->sendMessage(TF::RED."Cannot open vault at this height. Please lower down to at least Y=".Level::Y_MAX - Provider::INVENTORY_HEIGHT);
                     }else{
                         if($sender->hasPermission("playervaults.vault.".$args[0])){
-                            $sender->sendMessage(TF::YELLOW."Opening vault ".TF::AQUA."#".$args[0]."...");
+                            $sender->sendMessage(TF::YELLOW."§aOpening vault... §bPlease wait ".TF::AQUA."#".$args[0]."...");
                             $this->getData()->sendContents($sender, $args[0]);
                         }else{
-                            $sender->sendMessage(TF::RED."You don't have permission to access vault #".$args[0]);
+                            $sender->sendMessage(TF::RED."I'm sorry, but you don't have permission to access vault #".$args[0]);
                         }
                     }
                 }
@@ -150,7 +150,7 @@ class PlayerVaults extends PluginBase{
                                     break;
                                 }
                                 $this->getData()->sendContents($args[1], $args[2] ?? 1, $sender->getName());
-                                $sender->sendMessage(TF::YELLOW."Opening vault ".TF::AQUA."#".($args[2] ?? 1)." of ".($player ?? $args[1])."...");
+                                $sender->sendMessage(TF::YELLOW."§aOpening vault... §bPlease wait ".TF::AQUA."#".($args[2] ?? 1)." of ".($player ?? $args[1])."...");
                             }
                             break;
                         case "empty":
@@ -182,7 +182,7 @@ class PlayerVaults extends PluginBase{
                 switch(strtolower($args[0])){
                     case "about":
                         $sender->sendMessage(implode(TF::RESET.PHP_EOL, [
-                            TF::GREEN."PlayerVaults v".$this->getDescription()->getVersion()." by ".TF::YELLOW."Muqsit",
+                            TF::GREEN."PlayerVaults v".$this->getDescription()->getVersion()." by ".TF::YELLOW."Muqsit, edit by Zeao.",
                             TF::GREEN."Twitter: ".TF::AQUA."@muqsitrayyan",
                             TF::GREEN."GitHub Repo: ".TF::DARK_PURPLE."http://github.com/Muqsit/PlayerVaults"
                         ]));
